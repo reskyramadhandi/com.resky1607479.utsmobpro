@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">UTSMobpro</string>
+    <string name="movie_title">Movie Title</string>
+    <string name="release_date">Release Date</string>
+    <string name="genre">Genre</string>
+    <string name="more_info">More Info</string>
+    <string name="movie_poster_display">Movie Poster Display</string>
+    <string name="backdrop_image">Backdrop Image</string>
+    <string name="featured_crew">Featured Crew</string>
+    <string name="cast">Cast</string>
+    <string name="crew">Crew</string>
+    <string name="overview">Overview</string>
 </resources>
