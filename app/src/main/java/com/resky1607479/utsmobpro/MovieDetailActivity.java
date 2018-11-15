@@ -1,5 +1,6 @@
 package com.resky1607479.utsmobpro;
 
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -14,7 +15,10 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class MovieDetailActivity extends AppCompatActivity {
@@ -66,9 +70,18 @@ public class MovieDetailActivity extends AppCompatActivity {
         moviesRepository.getMovie(movieId, new OnGetMovieCallback() {
             @Override
             public void onSuccess(Movie movie) {
-                movieTitle.setText(movie.getTitle());
+                movieTitle.setText(movie.getTitle()+"  ("+parseDateToddMMyyyy(movie.getReleaseDate())+")");
                 movieOverviewLabel.setVisibility(View.VISIBLE);
                 movieOverview.setText(movie.getOverview());
+                Glide.with(movieBackdrop)
+                        .load(IMAGE_BASE_URL + movie.getBackdrop())
+                        .apply(RequestOptions.placeholderOf(R.color.colorPrimary))
+                        .into(movieBackdrop);
+                movieBackdrop.setColorFilter(Color.rgb(123, 123, 123), android.graphics.PorterDuff.Mode.MULTIPLY);
+                Glide.with(moviePoster)
+                        .load(IMAGE_BASE_URL + movie.getPosterPath())
+                        .apply(RequestOptions.placeholderOf(R.color.colorPrimary))
+                        .into(moviePoster);
             }
 
             @Override
@@ -82,6 +95,24 @@ public class MovieDetailActivity extends AppCompatActivity {
     public boolean onSupportNavigateUp() {
         onBackPressed();
         return true;
+    }
+
+    public String parseDateToddMMyyyy(String time) {
+        String inputPattern = "yyyy-MM-dd";
+        String outputPattern = "yyyy";
+        SimpleDateFormat inputFormat = new SimpleDateFormat(inputPattern);
+        SimpleDateFormat outputFormat = new SimpleDateFormat(outputPattern);
+
+        Date date = null;
+        String str = null;
+
+        try {
+            date = inputFormat.parse(time);
+            str = outputFormat.format(date);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return str;
     }
 
     private void showError() {

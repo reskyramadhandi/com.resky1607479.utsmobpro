@@ -4,10 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_marginEnd="8dp"
-    android:layout_marginStart="8dp"
-    android:layout_marginTop="8dp">
+    android:layout_height="match_parent">
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
@@ -18,21 +15,20 @@
             android:layout_width="match_parent"
             android:layout_height="250dp"
             android:contentDescription="@string/backdrop_image"
-            app:srcCompat="@drawable/ic_launcher_background"
-            tools:ignore="VectorDrawableCompat"
-            tools:layout_editor_absoluteX="0dp"
-            tools:layout_editor_absoluteY="0dp"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_launcher_background"
+            tools:ignore="VectorDrawableCompat" />
 
         <ImageView
             android:id="@+id/movieDetailsPoster"
             android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp"
-            android:layout_marginStart="30dp"
-            android:layout_marginTop="15dp"
+            android:layout_height="137dp"
+            android:layout_marginLeft="28dp"
+            android:layout_marginStart="28dp"
+            android:layout_marginTop="30dp"
             android:contentDescription="@string/movie_poster_display"
             android:scaleType="centerCrop"
             app:layout_constraintStart_toStartOf="@id/movieDetailsBackdrop"
@@ -43,50 +39,53 @@
             android:id="@+id/movieDetailsTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="30dp"
             android:text="@string/movie_title"
+            android:textColor="@android:color/white"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@id/movieDetailsBackdrop"
             app:layout_constraintStart_toEndOf="@id/movieDetailsPoster"
             app:layout_constraintTop_toTopOf="@id/movieDetailsBackdrop"
-            app:layout_constraintEnd_toEndOf="@id/movieDetailsBackdrop"
-            android:layout_marginTop="15dp"
-            android:layout_marginStart="15dp"
-            android:textColor="@android:color/black"
-            android:textSize="18sp"
-            android:layout_marginLeft="15dp" />
+            android:breakStrategy="balanced"/>
 
         <TextView
             android:id="@+id/movieDetailsFeaturedCrew"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/featured_crew"
-            app:layout_constraintStart_toEndOf="@id/movieDetailsPoster"
-            app:layout_constraintTop_toBottomOf="@id/movieDetailsTitle"
+            android:layout_marginLeft="15dp"
             android:layout_marginStart="15dp"
             android:layout_marginTop="8dp"
-            android:layout_marginLeft="15dp" />
+            android:text="@string/featured_crew"
+            android:textColor="@android:color/white"
+            app:layout_constraintStart_toEndOf="@id/movieDetailsPoster"
+            app:layout_constraintTop_toBottomOf="@id/movieDetailsTitle" />
 
         <TextView
             android:id="@+id/movieDetailsCast"
             android:layout_width="102dp"
             android:layout_height="148dp"
-            android:text="@string/cast"
-            tools:layout_editor_absoluteX="145dp"
-            tools:layout_editor_absoluteY="87dp"
             android:layout_marginTop="8dp"
+            android:text="@string/cast"
+            android:textColor="@android:color/white"
+            app:layout_constraintEnd_toStartOf="@id/movieDetailsCrew"
             app:layout_constraintStart_toEndOf="@id/movieDetailsPoster"
-            app:layout_constraintTop_toBottomOf="@id/movieDetailsFeaturedCrew"
-            app:layout_constraintEnd_toStartOf="@id/movieDetailsCrew" />
+            app:layout_constraintTop_toBottomOf="@id/movieDetailsFeaturedCrew" />
 
         <TextView
             android:id="@+id/movieDetailsCrew"
             android:layout_width="102dp"
             android:layout_height="148dp"
-            android:layout_marginTop="8dp"
             android:layout_marginLeft="15dp"
             android:layout_marginStart="15dp"
+            android:layout_marginTop="8dp"
             android:text="@string/crew"
+            android:textColor="@android:color/white"
+            app:layout_constraintEnd_toEndOf="@id/movieDetailsBackdrop"
             app:layout_constraintStart_toEndOf="@id/movieDetailsCast"
-            app:layout_constraintTop_toBottomOf="@id/movieDetailsFeaturedCrew"
-            app:layout_constraintEnd_toEndOf="@id/movieDetailsBackdrop" />
+            app:layout_constraintTop_toBottomOf="@id/movieDetailsFeaturedCrew" />
 
         <TextView
             android:id="@+id/movieDetailsOverviewTitle"
